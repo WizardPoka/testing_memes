@@ -1,5 +1,5 @@
 from minio import Minio
-from .config import MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, BUCKET_NAME
+from config import MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, BUCKET_NAME
 
 minio_client = Minio(
     MINIO_ENDPOINT,

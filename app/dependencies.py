@@ -1,7 +1,7 @@
-from .database import SessionLocal
+from database import SessionLocal
 from sqlalchemy.orm import Session
 
-def get_db() -> Session:
+def get_db() -> Session: # type: ignore
     db = SessionLocal()
     try:
         yield db

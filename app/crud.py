@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
-from . import models, schemas
+import models, schemas
 
 def get_meme(db: Session, meme_id: int) -> Optional[models.Meme]:
     return db.query(models.Meme).filter(models.Meme.id == meme_id).first()

@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, HTTPException, status
-from .minio_client import create_bucket, upload_image, get_image_url
-from .utils import save_upload_file, remove_file
+from minio_client import create_bucket, upload_image, get_image_url
+
+from utils import save_upload_file, remove_file
 
 app = FastAPI(title="Media Service", description="Service for handling media files", version="1.0.0")
 
