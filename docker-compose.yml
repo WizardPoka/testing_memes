@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - minio
+
+  media:
+    build:
+      context: .
+      dockerfile: Dockerfile.media
+    ports:
+      - "8001:8001"
+    depends_on:
+      - minio
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: memes_db
+    ports:
+      - "5432:5432"
+
+  minio:
+    image: minio/minio
+    environment:
+      MINIO_ACCESS_KEY: minioaccesskey
+      MINIO_SECRET_KEY: miniosecretkey
+    command: server /data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+volumes:
+  minio_data:
